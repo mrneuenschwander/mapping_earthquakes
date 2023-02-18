@@ -32,11 +32,17 @@ let baseMaps = {
 L.control.layers(baseMaps).addTo(map);
 
 // Add GeoJSON data.
-// Accessing the Toronto airline routes GeoJSON URL.
-let torontoHoods = "https://raw.githubusercontent.com/mrneuenschwander/Mapping_Earthquakes/main/torontoNeighborhoods.json";
+// Accessing the Toronto neighborhoods GeoJSON URL.
+let torontoHoods = "https://raw.githubusercontent.com/mrneuenschwander/mapping_earthquakes/main/torontoNeighborhoods.json";
 
 // Grabbing our GeoJSON data.
 d3.json(torontoHoods).then(function(data){
   L.geoJSON(data, {
+    color:"yellow",
+    line: "blue",
+    weight: 2,
+    onEachFeature: function(feature, layer){
+      layer.bindPopup("<h2>Neighborhood: " + feature.properties.AREA_NAME + "</h2>")
+    }
   }).addTo(map)
 });
