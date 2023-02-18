@@ -105,7 +105,7 @@ L.geoJSON(data, {
     }
   }).addTo(earthquakes);
 
-  // add eartquake layer with button
+  // add earthquake layer with button
   earthquakes.addTo(map);
 });
 
